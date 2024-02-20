@@ -1,3 +1,3 @@
 locals {
-  base_name = "formation-terraform-tp1"
+  base_name = "groupe8"
 }
