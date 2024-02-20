@@ -15,10 +15,13 @@ While variables.tf declares variables, terraform.tfvars is where you can assign 
 
 ## Interaction Among These Files
 
-### Initialization: When you run terraform init, Terraform initializes the working directory, downloads the AWS provider defined in main.tf, and prepares the environment for other commands.
+### Initialization:
+When you run terraform init, Terraform initializes the working directory, downloads the AWS provider defined in main.tf, and prepares the environment for other commands.
 
-### Planning and Applying: With terraform plan and terraform apply, Terraform reads your configuration in main.tf, substitutes variables defined in variables.tf with values provided in terraform.tfvars (or other sources), and then creates or updates resources in your AWS account accordingly.
+### Planning and Applying:
+With terraform plan and terraform apply, Terraform reads your configuration in main.tf, substitutes variables defined in variables.tf with values provided in terraform.tfvars (or other sources), and then creates or updates resources in your AWS account accordingly.
 
-### Output: After applying your configuration, Terraform uses outputs.tf to display specified information about the resources it has managed. This helps you quickly access important details like IP addresses or DNS names.
+### Output:
+After applying your configuration, Terraform uses outputs.tf to display specified information about the resources it has managed. This helps you quickly access important details like IP addresses or DNS names.
 
 This structure not only helps in organizing your Terraform configuration but also enhances reusability and maintainability. As your infrastructure grows more complex, you might introduce additional files for modularization, such as breaking out resource configurations into separate files or modules for better organization.
