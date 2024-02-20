@@ -75,7 +75,7 @@ resource "aws_subnet" "sn5" {
 // EC2 pool
 resource "aws_launch_template" "lt" {
   name_prefix   = "groupe8"
-  image_id      = "ami-1a2b3c"
+  image_id      = "ami-05cf39cd05d80be83"
   instance_type = "t2.micro"
 }
 
@@ -93,7 +93,7 @@ resource "aws_autoscaling_group" "ec2_pool" {
 
 // Internet Gateway
 resource "aws_internet_gateway" "ig" {
-  vpc_id = "vpc_paris"
+  vpc_id = aws_vpc.vpc_paris.id
   tags = {
     Name = "vpc_paris_igw"
   }
@@ -105,11 +105,11 @@ resource "aws_eip" "nat_eip" {
   depends_on = [aws_internet_gateway.ig]
 }
 // NAT
-resource "aws_nat_gateway" "nat" {
-  allocation_id = aws_eip.nat_eip.id
-  subnet_id     = [aws_subnet.sn0.id, aws_subnet.sn1.id, aws_subnet.sn2.id]
-  depends_on    = [aws_internet_gateway.ig]
-  tags = {
-    Name = "nat"
-  }
-}
+# resource "aws_nat_gateway" "nat" {
+#   allocation_id = aws_eip.nat_eip.id
+#   subnet_id     = [aws_subnet.sn0.id, aws_subnet.sn1.id, aws_subnet.sn2.id]
+#   depends_on    = [aws_internet_gateway.ig]
+#   tags = {
+#     Name = "nat"
+#   }
+# }
